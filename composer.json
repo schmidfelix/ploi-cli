@@ -1,0 +1,51 @@
+{
+    "name": "schmidfelix/ploi-cli",
+    "description": "Command line interface for ploi.",
+    "keywords": [
+        "ploi",
+        "ploi-cli",
+        "cli"
+    ],
+    "homepage": "https://felix-schmid.de",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Felix Schmid",
+            "email": "hallo@felix-schmid.de"
+        }
+    ],
+    "require": {
+        "php": "^7.4",
+        "padraic/phar-updater": "^1.0.6"
+    },
+    "require-dev": {
+        "guzzlehttp/guzzle": "^6.5.5",
+        "illuminate/http": "^8.0",
+        "laravel-zero/framework": "^8.0",
+        "mockery/mockery": "^1.4.2",
+        "nunomaduro/laravel-console-menu": "^3.1",
+        "phpunit/phpunit": "^9.3",
+        "symfony/yaml": "^5.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "bin": [
+        "builds/ploi"
+    ]
+}
