@@ -70,6 +70,11 @@ class InitCommand extends Command
 
         $configuration->initialize($serverId, $siteId, getcwd(), $domain);
 
+        if(isset($selectedDomain)) {
+            $this->info("Your project got linked to {$domain}!");
+            exit(0);
+        }
+
         $gitRepo = $this->getGitRepositoryUrl();
         if (Str::startsWith($gitRepo, 'fatal')) {
             $this->error('This site is no git repository!');
