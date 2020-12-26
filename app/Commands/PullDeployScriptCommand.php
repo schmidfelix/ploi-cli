@@ -10,7 +10,6 @@ use LaravelZero\Framework\Commands\Command;
 
 class PullDeployScriptCommand extends Command
 {
-
     use EnsureHasToken;
     use EnsureHasPloiConfiguration;
 
@@ -24,11 +23,15 @@ class PullDeployScriptCommand extends Command
 
         $filename = $this->option('filename') ?? 'deploy.sh';
 
-        $env = $ploi->getDeployScript($configuration->get('server'), $configuration->get('site'));
+        if (file_exists($filename)) {
+            if (!$this->confirm("Are you sure you want to override your local {$filename} file?", false)) {
+                exit(1);
+            }
+        }
 
-        file_put_contents($filename, $env);
+        $deployScript = $ploi->getDeployScript($configuration->get('server'), $configuration->get('site'));
+        file_put_contents($filename, $deployScript);
 
         $this->info("✅ Saved remote deploy script to {$filename}.");
     }
-
 }

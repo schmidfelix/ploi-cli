@@ -10,7 +10,6 @@ use LaravelZero\Framework\Commands\Command;
 
 class PullEnvCommand extends Command
 {
-
     use EnsureHasToken;
     use EnsureHasPloiConfiguration;
 
@@ -24,11 +23,15 @@ class PullEnvCommand extends Command
 
         $filename = $this->option('filename') ?? '.env.ploi';
 
-        $env = $ploi->getEnvironmentFile($configuration->get('server'), $configuration->get('site'));
+        if (file_exists($filename)) {
+            if (!$this->confirm("Are you sure you want to override your local {$filename} file?", false)) {
+                exit(1);
+            }
+        }
 
+        $env = $ploi->getEnvironmentFile($configuration->get('server'), $configuration->get('site'));
         file_put_contents($filename, $env);
 
         $this->info("✅ Saved remote environment to {$filename}.");
     }
-
 }
