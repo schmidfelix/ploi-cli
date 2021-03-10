@@ -16,8 +16,7 @@
         }
     ],
     "require": {
-        "php": "^7.4|^8.0",
-        "padraic/phar-updater": "^1.0.6"
+        "php": "^7.4|^8.0"
     },
     "require-dev": {
         "guzzlehttp/guzzle": "^6.5.5",
