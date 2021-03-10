@@ -5,7 +5,7 @@ weight: 2
 
 # Pushing your local deploy script to ploi
 
-With `ploi deploy:push` you can push your local .env file to ploi.
+With `ploi deploy:push` you can push your local deploy script to ploi.
 
 By default it will use the `deploy.sh` file, but you can customize that by providing the
 `--filename` parameter.
