@@ -22,7 +22,7 @@ class Ploi
 
     public function getServers()
     {
-        $response = Http::withToken($this->token)->get(self::$BASE_URL . 'servers');
+        $response = Http::withToken($this->token)->get(self::$BASE_URL . 'servers?per_page=50');
 
         return $response['data'];
     }
@@ -34,7 +34,7 @@ class Ploi
 
     public function getSites($server)
     {
-        return Http::withToken($this->token)->get(self::$BASE_URL . "servers/{$server}/sites")['data'];
+        return Http::withToken($this->token)->get(self::$BASE_URL . "servers/{$server}/sites?per_page=50")['data'];
     }
 
     public function createSite($server, $rootDomain, $webDir, $systemUser): int
@@ -131,7 +131,7 @@ class Ploi
 
     public function getDatabases($server)
     {
-        return Http::withToken($this->token)->get(self::$BASE_URL . "servers/{$server}/databases")['data'];
+        return Http::withToken($this->token)->get(self::$BASE_URL . "servers/{$server}/databases?per_page=50")['data'];
     }
 
     public function createDatabase($server, $name, $user, $password)
@@ -160,7 +160,7 @@ class Ploi
 
     public function getLogs($server, $site)
     {
-        return Http::withToken($this->token)->get(self::$BASE_URL . "servers/{$server}/sites/{$site}/log")['data'];
+        return Http::withToken($this->token)->get(self::$BASE_URL . "servers/{$server}/sites/{$site}/log?per_page=50")['data'];
     }
 
     public function getLog($server, $site, $log)
