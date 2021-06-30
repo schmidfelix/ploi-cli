@@ -7,7 +7,7 @@ trait EnsureHasToken
 
     protected function hasToken(): bool
     {
-        if (isset($_ENV['PLOI_API_TOKEN'])) {
+        if (getenv('PLOI_API_TOKEN')) {
             return true;
         }
 

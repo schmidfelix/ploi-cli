@@ -22,7 +22,7 @@ class AppServiceProvider extends ServiceProvider
         $this->loadConfigurationFile();
 
         $this->app->singleton(Ploi::class, function () {
-            if (isset($_ENV['PLOI_API_TOKEN'])) {
+            if (getenv('PLOI_API_TOKEN')) {
                 return new Ploi(getenv('PLOI_API_TOKEN'));
             }
 
