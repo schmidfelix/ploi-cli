@@ -102,6 +102,11 @@ class Ploi
         return Http::withToken($this->token)->post(self::$BASE_URL . "servers/{$server}/sites/{$site}/deploy")->status() == 200;
     }
 
+    public function deployToProduction($server, $site)
+    {
+        return Http::withToken($this->token)->post(self::$BASE_URL . "servers/{$server}/sites/{$site}/deploy-to-production")->json();
+    }
+
     public function certificates($server, $site)
     {
         return Http::withToken($this->token)->get(self::$BASE_URL . "servers/{$server}/sites/{$site}/certificates")['data'];

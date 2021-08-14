@@ -15,7 +15,7 @@ class DeployCommand extends Command
     use EnsureHasToken;
     use EnsureHasPloiConfiguration;
 
-    protected $signature = 'deploy:run {--log}';
+    protected $signature = 'deploy:run {--log} {--production}';
     protected $description = 'Deploys the current site';
 
     public function handle(Ploi $ploi, Configuration $configuration)
@@ -23,9 +23,12 @@ class DeployCommand extends Command
         $this->ensureHasToken();
         $this->ensureHasPloiConfiguration();
 
-        $ploi->deploy($configuration->get('server'), $configuration->get('site'));
+        $this->deploy($ploi, $configuration);
 
-        $this->info("✅ Deploying...");
+        if($this->option('log') && $this->option('production')) {
+            $this->warn("Watching the production deployment log isn't available yet, please see the logs in your ploi dashboard.");
+            exit(0);
+        }
 
         if ($this->option('log')) {
             $this->warn('Waiting for logs...');
@@ -36,6 +39,17 @@ class DeployCommand extends Command
             } while ($logId == null);
 
             $this->watchLog($ploi, $configuration, $logId);
+        }
+    }
+
+    protected function deploy(Ploi $ploi, Configuration $configuration)
+    {
+        if($this->option('production')) {
+            $ploi->deployToProduction($configuration->get('server'), $configuration->get('site'));
+            $this->info("✅ Deploying staging site to production...");
+        } else {
+            $ploi->deploy($configuration->get('server'), $configuration->get('site'));
+            $this->info("✅ Deploying...");
         }
     }
 
