@@ -27,6 +27,11 @@ class Ploi
         return $response['data'];
     }
 
+    public function getServer($server)
+    {
+        return Http::withToken($this->token)->get(self::$BASE_URL . "servers/{$server}")['data'];
+    }
+
     public function getServerProviders()
     {
         return Http::withToken($this->token)->get(self::$BASE_URL . "user/server-providers")['data'];
@@ -35,6 +40,11 @@ class Ploi
     public function getSites($server)
     {
         return Http::withToken($this->token)->get(self::$BASE_URL . "servers/{$server}/sites?per_page=50")['data'];
+    }
+
+    public function getSite($server, $site)
+    {
+        return Http::withToken($this->token)->get(self::$BASE_URL . "servers/{$server}/sites/{$site}")['data'];
     }
 
     public function createSite($server, $rootDomain, $webDir, $systemUser): int
