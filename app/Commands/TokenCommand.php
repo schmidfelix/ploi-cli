@@ -18,7 +18,7 @@ class TokenCommand extends Command
 
     use EnsureHasToken;
 
-    protected $signature = 'token {token?} {--force}';
+    protected $signature = 'token {token} {--force}';
     protected $description = 'Store your ploi api token.';
 
     public function handle()
@@ -29,8 +29,6 @@ class TokenCommand extends Command
         }
 
         $token = $this->argument('token');
-
-        if ($token == null) $token = $this->ask('Whats your token?');
 
         $this->line('Checking token...');
 
