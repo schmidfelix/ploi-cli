@@ -163,6 +163,11 @@ class Ploi
         return Http::withToken($this->token)->delete(self::$BASE_URL . "servers/{$server}/databases/{$database}")->status() == 200;
     }
 
+    public function getTestDomain($server, $site)
+    {
+        return Http::withToken($this->token)->get(self::$BASE_URL . "servers/{$server}/sites/{$site}/test-domain")['data'];
+    }
+
     public function enableTestDomain($server, $site)
     {
         return Http::withToken($this->token)->post(self::$BASE_URL . "servers/{$server}/sites/{$site}/test-domain")['data'];
