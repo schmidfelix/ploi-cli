@@ -16,16 +16,16 @@
         }
     ],
     "require": {
-        "php": "^8.0",
-        "laravel-zero/framework": "^9.0",
-        "guzzlehttp/guzzle": "^7.4",
-        "illuminate/http": "^9.0",
-        "nunomaduro/laravel-console-menu": "^3.3",
-        "symfony/yaml": "^5.1"
+        "php": "^8.0"
     },
     "require-dev": {
+        "guzzlehttp/guzzle": "^7.4",
+        "illuminate/http": "^9.0",
+        "laravel-zero/framework": "^9.0",
         "mockery/mockery": "^1.4.2",
-        "phpunit/phpunit": "^9.5"
+        "nunomaduro/laravel-console-menu": "^3.3",
+        "phpunit/phpunit": "^9.5",
+        "symfony/yaml": "^5.1"
     },
     "autoload": {
         "psr-4": {
