@@ -1,3 +1,7 @@
+**Notice:** This project has been discontinued and is no longer maintained. For ongoing development and updates, please refer to the [official ploi/ploi-cli](https://github.com/ploi/ploi-cli) maintained by Ploi.
+
+---
+
 ![](https://banners.beyondco.de/Ploi%20CLI.png?theme=light&packageManager=composer+require&packageName=schmidfelix%2Fploi-cli&pattern=hexagons&style=style_1&description=A+simple+command+line+interface+which+makes+deploying+with+ploi+even+easier.&md=1&showWatermark=0&fontSize=100px&images=terminal)
 
 # Ploi CLI
