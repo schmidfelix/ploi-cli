@@ -1,9 +1,9 @@
 ---
-title: Droping a database
+title: Dropping a database
 weight: 3
 ---
 
-# Droping a database
+# Dropping a database
 
 The `ploi db:drop` command removes the selected certificate.
 
